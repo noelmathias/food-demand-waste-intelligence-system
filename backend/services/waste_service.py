@@ -3,9 +3,9 @@ import pandas as pd
 import numpy as np
 import os
 
-MODEL_PATH = "models/waste_model.pkl"
-FEATURES_PATH = "models/waste_model_features.pkl"
-HISTORY_PATH = "backend/data/history.csv"
+MODEL_PATH = "../models/waste_model.pkl"
+FEATURES_PATH = "../models/waste_model_features.pkl"
+HISTORY_PATH = "../data/history.csv"
 
 waste_model = joblib.load(MODEL_PATH)
 waste_features = joblib.load(FEATURES_PATH)

@@ -6,8 +6,8 @@ from datetime import datetime
 
 
 
-demand_model = joblib.load("models/demand_model.pkl")
-HISTORY_PATH = "backend/data/history.csv"
+demand_model = joblib.load("../models/demand_model.pkl")
+HISTORY_PATH = "../data/history.csv"
 
 def predict_demand(data):
 
