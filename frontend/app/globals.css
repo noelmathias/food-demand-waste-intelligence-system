@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -----------------------------
+   GLOBAL RESET
+----------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* -----------------------------
+   BODY (MAIN THEME)
+----------------------------- */
+body {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* -----------------------------
+   SCROLLBAR (CLEAN LOOK)
+----------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* -----------------------------
+   INPUT FIELDS
+----------------------------- */
+input {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px #6366f1;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   BUTTONS
+----------------------------- */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* -----------------------------
+   CARD (GLASS EFFECT)
+----------------------------- */
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* -----------------------------
+   TEXT STYLES
+----------------------------- */
+h1, h2, h3 {
+  color: #f8fafc;
+}
+
+p {
+  color: #cbd5f5;
+}
+
+/* -----------------------------
+   STATUS COLORS
+----------------------------- */
+.text-success {
+  color: #22c55e;
+}
+
+.text-warning {
+  color: #facc15;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+/* -----------------------------
+   GRADIENT UTILITIES
+----------------------------- */
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+}
+
+.gradient-orange {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+/* -----------------------------
+   ANIMATIONS
+----------------------------- */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
