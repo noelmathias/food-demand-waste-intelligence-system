@@ -1,13 +1,14 @@
-import pandas as pd
-from datetime import datetime
 import os
-import joblib
 from datetime import datetime
+from pathlib import Path
 
+import joblib
+import pandas as pd
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+BACKEND_DIR = Path(__file__).resolve().parents[1]
 
-
-demand_model = joblib.load("models/demand_model.pkl")
-HISTORY_PATH = "data/history.csv"
+demand_model = joblib.load(PROJECT_ROOT / "models" / "demand_model.pkl")
+HISTORY_PATH = BACKEND_DIR / "data" / "history.csv"
 
 def predict_demand(data):
 

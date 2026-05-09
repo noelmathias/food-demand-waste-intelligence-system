@@ -1,11 +1,16 @@
 import joblib
-import pandas as pd
-import numpy as np
 import os
+from pathlib import Path
 
-MODEL_PATH = "models/waste_model.pkl"
-FEATURES_PATH = "models/waste_model_features.pkl"
-HISTORY_PATH = "data/history.csv"
+import numpy as np
+import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+
+MODEL_PATH = PROJECT_ROOT / "models" / "waste_model.pkl"
+FEATURES_PATH = PROJECT_ROOT / "models" / "waste_model_features.pkl"
+HISTORY_PATH = BACKEND_DIR / "data" / "history.csv"
 
 waste_model = joblib.load(MODEL_PATH)
 waste_features = joblib.load(FEATURES_PATH)
