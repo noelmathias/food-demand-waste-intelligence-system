@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.schemas.input_schema import PredictionInput
-from backend.schemas.waste_input import WasteInput
+from schemas.input_schema import PredictionInput
+from schemas.waste_input import WasteInput
 
-from backend.services.demand_service import predict_demand
-from backend.services.waste_service import predict_waste
-from backend.services.decision_service import make_decision
+from services.demand_service import predict_demand
+from services.waste_service import predict_waste
+from services.decision_service import make_decision
 
 app = FastAPI(title="Food Demand & Waste Intelligence API")
 
