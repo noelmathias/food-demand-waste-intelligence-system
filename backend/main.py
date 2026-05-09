@@ -10,7 +10,7 @@ from backend.services.decision_service import make_decision
 
 app = FastAPI(title="Food Demand & Waste Intelligence API")
 
-# ✅ CORS (important for Next.js)
+# âœ… CORS (important for Next.js)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -54,7 +54,7 @@ def predict_waste_api(data: dict):
 # ---------------------------
 @app.post("/predict-all")
 def predict_all(data: dict):
-    # If using Pydantic earlier → remove it for now
+    # If using Pydantic earlier â†’ remove it for now
 
     demand = predict_demand(data)
 

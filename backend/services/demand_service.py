@@ -6,23 +6,23 @@ from datetime import datetime
 
 
 
-demand_model = joblib.load("../models/demand_model.pkl")
-HISTORY_PATH = "../data/history.csv"
+demand_model = joblib.load("models/demand_model.pkl")
+HISTORY_PATH = "data/history.csv"
 
 def predict_demand(data):
 
-    # ✅ 🔥 STEP 1: CONVERT TYPES FIRST
+    # âœ… ðŸ”¥ STEP 1: CONVERT TYPES FIRST
     data["store"] = int(data["store"])
     data["item"] = int(data["item"])
     data["day"] = int(data["day"])
     data["month"] = int(data["month"])
     data["year"] = int(data["year"])
 
-    # ✅ STEP 2: DATE CALCULATION
+    # âœ… STEP 2: DATE CALCULATION
     date_obj = datetime(data["year"], data["month"], data["day"])
     day_of_week = date_obj.weekday()
 
-    # 🔹 Load history
+    # ðŸ”¹ Load history
     if os.path.exists(HISTORY_PATH):
         try:
             history = pd.read_csv(HISTORY_PATH)
@@ -31,18 +31,18 @@ def predict_demand(data):
     else:
         history = pd.DataFrame(columns=["store", "item", "date", "demand"])
 
-    # 🔹 Filter store + item
+    # ðŸ”¹ Filter store + item
     hist = history[
         (history["store"] == data["store"]) &
         (history["item"] == data["item"])
     ].copy()
 
-    # 🔹 Convert date
+    # ðŸ”¹ Convert date
     if not hist.empty:
         hist["date"] = pd.to_datetime(hist["date"])
         hist = hist.sort_values("date")
 
-    # 🔥 FEATURE ENGINEERING
+    # ðŸ”¥ FEATURE ENGINEERING
     if len(hist) >= 7:
         lag_1 = hist.iloc[-1]["demand"]
         lag_7 = hist.iloc[-7]["demand"]
@@ -64,7 +64,7 @@ def predict_demand(data):
         rolling_mean_7 = 20
         rolling_std_7 = 5
 
-    # ✅ STEP 3: CREATE DF (NOW CORRECT TYPES)
+    # âœ… STEP 3: CREATE DF (NOW CORRECT TYPES)
     df = pd.DataFrame([{
         "store": data["store"],
         "item": data["item"],
@@ -78,10 +78,10 @@ def predict_demand(data):
         "rolling_std_7": rolling_std_7
     }])
 
-    # 🔹 Predict
+    # ðŸ”¹ Predict
     prediction = demand_model.predict(df)[0]
 
-    # 🔹 Save prediction
+    # ðŸ”¹ Save prediction
     new_row = pd.DataFrame([{
         "store": data["store"],
         "item": data["item"],
